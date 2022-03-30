@@ -3,6 +3,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+require("dotenv").config({
+  path: `.env`,
+})
 
 module.exports = {
   siteMetadata: {

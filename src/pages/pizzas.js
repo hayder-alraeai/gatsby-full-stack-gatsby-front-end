@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import PizzaList from "../components/PizzaList"
+import ToppingFilter from "../components/ToppingFilter"
 
 function Pizzas({ data }) {
   return (
     <>
+      <ToppingFilter />
       <PizzaList pizzas={data.pizzas.nodes} />
     </>
   )
@@ -24,6 +26,11 @@ export const query = graphql`
         toppings {
           id
           name
+        }
+        image {
+          asset {
+            gatsbyImageData(width: 400)
+          }
         }
       }
     }
