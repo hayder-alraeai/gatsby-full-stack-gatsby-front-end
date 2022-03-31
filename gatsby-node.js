@@ -86,6 +86,7 @@ exports.sourceNodes = async ({
 
 async function createSliceMastersPages({ graphql, actions }) {
   const { createPage } = actions
+  const personTemplate = path.resolve("./src/templates/Person.js")
   const { data } = await graphql(`
     query {
       sliceMasters: allSanityPerson {
@@ -109,9 +110,9 @@ async function createSliceMastersPages({ graphql, actions }) {
   data.sliceMasters.nodes.forEach(person => {
     createPage({
       path: `/slice-masters/${person.slug.current}`,
-      component: pizzaTemplate, //Todo: needs a template to slice masters
+      component: personTemplate,
       context: {
-        slug: edge.slug.current,
+        person,
       },
     })
   })
